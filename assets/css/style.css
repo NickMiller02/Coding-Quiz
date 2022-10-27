@@ -1,13 +1,15 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 :root {
-    purple: rgb(138, 21, 118);
-    blue: rgb(15, 87, 221);
-    red: rgb(155, 29, 29);
-    white: #ffff;
-    grey: rgb(97, 90, 90);
+   --purple: rgb(138, 21, 118);
+    --blue: rgb(15, 87, 221);
+    --lightblue: rgb(117, 165, 204);
+    --red: rgb(155, 29, 29);
+    --white: #ffff;
+   --grey: rgb(97, 90, 90);
 }
 
 body {
@@ -18,14 +20,50 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--lightblue);
 }
 
 .container {
     padding: 20;
     margin: 20;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: grey;
+    border-radius: 5px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.box {
+    padding: 40;
+    margin: 40;
+    width: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.btn-box {
+    display: grid;
+    gap: 10px
+}
+
+.hidden {
+    display: none;
 }
