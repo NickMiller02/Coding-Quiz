@@ -1,0 +1,31 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    purple: rgb(138, 21, 118);
+    blue: rgb(15, 87, 221);
+    red: rgb(155, 29, 29);
+    white: #ffff;
+    grey: rgb(97, 90, 90);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.container {
+    padding: 20;
+    margin: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
