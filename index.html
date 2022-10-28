@@ -11,20 +11,20 @@
 <body>
     <div class="container flex-column">
 
-        <div id="start-srcn" class="flex-column flex-center">
+        <div id="start-scrn" class="flex-column flex-center">
             <div id="start-msg">
                 <h1>Coding Quiz</h1>
             </div>
-            <div id="start-box" class="btn-box">
+            <div class="btn-box">
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="score-btn" class="score-btn btn">Highscores</button>
             </div>
         </div>
 
-        <div class="hidden flex-column flex-center">
-            <div id="question" class="text-center">
-                <h1>Testing how long this can go before it gets too ugly what about now</h1>
-            </div>
+        <div id="question-box" class="hidden flex-column flex-center">
+            <p class="time"></p>
+            <p class="score"></p>
+            <h1 id="question" class="text-center">Testing how long this can go before it gets too ugly what about now</h1>
             <div id="answer-box" class="btn-box">
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
@@ -34,4 +34,5 @@
         </div>
 
     </div>
+    <script src="./assets/js/script.js"></script>
 </body>
