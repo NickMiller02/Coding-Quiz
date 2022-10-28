@@ -66,3 +66,8 @@ border-radius: 5px;
 .hidden {
     display: none;
 }
+
+.btn:hover {
+    background-color: var(--lightblue);
+    border-color: black;
+}
