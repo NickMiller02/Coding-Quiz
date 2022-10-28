@@ -1,6 +1,7 @@
 var startScreen = document.getElementById('start-scrn');
 var startButton = document.getElementById('start-btn');
 var scoreButton = document.getElementById('score-btn');
+var answerBox = document.getElementById('answer-box');
 var questionScreen = document.getElementById('question-box');
 var questionEl = document.getElementById('question');
 var answer1El = document.getElementById('answer1');
@@ -16,40 +17,13 @@ var question1 = 'What can be used to store data locally';
 var question2 = 'What language creates structure?';
 var question3 = 'Which language creates style?';
 var question4 = 'Which languages can you connect to work together';
-var questions = [
-    {
-        question: 'What can be used to store data locally',
-        answer1: 'Local Storage',
-        answer2: 'A Function',
-        answer3: 'A Variable',
-        answer4: 'A String',
-        correct: 1,
-    },
-    {
-        question: 'What language creates structure?',
-        answer1: 'JavaScript',
-        answer2: 'CSS',
-        answer3: 'HTML',
-        answer4: 'None',
-        correct: 3,
-    },
-    {
-        question: 'Which language creates style?',
-        answer1: 'Markdown',
-        answer2: 'HTML',
-        answer3: 'JavaScript',
-        answer4: 'CSS',
-        correct: 4,
-    },
-    {
-        question: 'Which languages can you connect to work together',
-        answer1: 'JavaScript',
-        answer2: 'HTML',
-        answer3: 'CSS',
-        answer4: 'All of The Above',
-        correct: 4,
-    }
-]
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = "Timer: " + secondsLeft;
+      }, 1000);
+}
 
 startButton.addEventListener('click', startGame);
 
@@ -61,9 +35,11 @@ function startGame(event) {
     questionScreen.classList.remove('hidden');
     setQuestion1();
 
-    if(secondsLeft = 0) {
-        return
-    }
+    answerBox.addEventListener('click', function({
+        if(true) {
+            setQuestion2();
+        }
+    }));
 }
 
 
@@ -78,6 +54,12 @@ function setQuestion1() {
     answer2El = false;
     answer3El = false;
     answer4El = false;
+
+    if (answer1El.addEventListener('click') === true) {
+        score++;
+    } else {
+        secondsLeft = secondsLeft - 15;
+    }
 }
 
 function setQuestion2() {
@@ -116,10 +98,5 @@ function setQuestion4() {
     answer4El = false;
 }
 
-function setTime() {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent = "Timer: " + secondsLeft;
-      }, 1000);
-}
+
 
