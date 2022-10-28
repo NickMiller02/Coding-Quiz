@@ -7,10 +7,12 @@
    --purple: rgb(138, 21, 118);
     --blue: rgb(15, 87, 221);
     --lightblue: rgb(117, 165, 204);
-    --red: rgb(155, 29, 29);
+    --red: rgb(97, 29, 29);
     --white: #ffff;
    --grey: rgb(97, 90, 90);
+   --lightgrey: rgb(177, 177, 177);
 }
+
 
 body {
     padding: 0;
@@ -20,19 +22,18 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: var(--lightblue);
+    background-color: var(--grey);
 }
 
 .container {
-    padding: 20;
-    margin: 20;
-    min-width: 800px;
-    min-height: 800px;
+    width: 800px;
+    max-width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
+    background-color: var(--lightgrey);
     border-radius: 5px;
+    box-shadow: 10px;
 }
 
 .flex-column {
@@ -49,21 +50,17 @@ body {
     text-align: center;
 }
 
-.box {
-    padding: 40;
-    margin: 40;
-    width: 500px;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: red;
-    border-radius: 5px;
-}
-
 .btn-box {
     display: grid;
     gap: 10px
+}
+
+.btn {
+font-size: 30px;
+padding: 2;
+text-align: center;
+background-color: var(--purple);
+border-radius: 5px;
 }
 
 .hidden {
