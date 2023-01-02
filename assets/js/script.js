@@ -15,7 +15,7 @@ var timerDisplay = document.querySelector("#timer");
 var hsFormScreen = document.querySelector(".form");
 var input = document.querySelector(".user-input");
 var submitBtn = document.querySelector(".submit");
-var highscoreSection = document.querySelector(".high-scores");
+var highscoreScreen = document.querySelector(".high-scores");
 
 
 //Logical variables
@@ -89,9 +89,11 @@ function showQuestions() {
 };
 
 function nextQuestion() {
+    //Measures what question number the user is on
     if (currentIndex === (questions.length -1)) {
         initialForm();
     } else {
+        //Continues to display next question if user hasnt reached #5
         currentIndex++;
 
         questionDisplay.textContent = questions[currentIndex].question;
@@ -102,6 +104,7 @@ function nextQuestion() {
     };
 };
 
+//Measures out the display timer
 function startTimer() {
     timerDisplay.textContent = timer;
 
@@ -114,4 +117,46 @@ function startTimer() {
             initialForm();
         };
     },1000);
+};
+
+//High score form screen and button
+function initialForm() {
+  questionScreen.classList.remove("active");
+  hsFormScreen.classList.add("active");
+
+  getScore();
+};
+
+//Save score in High score form screen
+submitBtn.addEventListener("click", function() {
+  var userInit = input.value;
+  
+  hsFormScreen.classList.remove("active");
+  highscoreScreen.classList.add("active");
+  
+  setScore(score, userInit);
+});
+
+//Local Storage
+function setScore() {
+  
+  localStorage.setItem("highscore", score);
+  localStorage.setItem("userInitials", document.getElementById('user-input').value);
+
+  getScore();
+};
+
+function getScore() {
+  var scoreSummary = `
+  <h2>` + localStorage.getItem("userInitials") + `'s highscore: <h2>
+  <h1>` + localStorage.getItem("highscore") + `</h1>
+  
+  <button onclick="clearScore()">Reset Score</button><button onclick="resetGame()">Replay</button>`;
+
+  document.getElementById(".high-scores").innerHTML = scoreSummary;
+};
+
+function clearScore(){
+  localStorage.setItem("highscore", "");
+  localStorage.setItem("user-input", "");
 };
