@@ -1,125 +1,117 @@
-var startScreen = document.getElementById('start-scrn');
-var startButton = document.getElementById('start-btn');
-var scoreButton = document.getElementById('score-btn');
-var questionScreen = document.getElementById('question-box');
-var questionEl = document.getElementById('question');
-var answer1El = document.getElementById('answer1');
-var answer2El = document.getElementById('answer2');
-var answer3El = document.getElementById('answer3');
-var answer4El = document.getElementById('answer4');
-var timeEl = document.querySelector('.time');
-var scoreEl = document.querySelector('.score');
+// Start Screen variables
+var startScreen = document.querySelector(".start-scrn");
+var startBtn = document.querySelector("#start-btn");
 
-var secondsLeft = 60;
+// Question Screen Variables
+var questionScreen = document.querySelector(".question-scrn");
+var optionBtns = document.querySelectorAll(".option");
+var questionDisplay = document.querySelector(".questions")
+
+//Score and Timer
+var scoreDisplay = document.querySelector(".score");
+var timerDisplay = document.querySelector("#timer");
+
+//High Score form Screen
+var hsFormScreen = document.querySelector(".form");
+var input = document.querySelector(".user-input");
+var submitBtn = document.querySelector(".submit");
+var highscoreSection = document.querySelector(".high-scores");
+
+
+//Logical variables
+var currentIndex = 0;
 var score = 0;
-var question1 = 'What can be used to store data locally';
-var question2 = 'What language creates structure?';
-var question3 = 'Which language creates style?';
-var question4 = 'Which languages can you connect to work together';
-var questions = [
-    {
-        question: 'What can be used to store data locally',
-        answer1: 'Local Storage',
-        answer2: 'A Function',
-        answer3: 'A Variable',
-        answer4: 'A String',
-        correct: 1,
+var timer = 60;
+var maxHighScores = 10;
+var highScores = 0;
+
+//Setting up usable questions
+var questions = [{
+
+    question: 'What can be used to store data locally',
+    options: ['Local Storage', 'A Function', 'A Variable', 'A String'],
+    answer: "Local Storage"
     },
     {
-        question: 'What language creates structure?',
-        answer1: 'JavaScript',
-        answer2: 'CSS',
-        answer3: 'HTML',
-        answer4: 'None',
-        correct: 3,
+    question: 'What language creates structure?',
+    options: ['JavaScript', 'CSS', 'HTML', 'None'],
+    answer: "HTML"
     },
     {
-        question: 'Which language creates style?',
-        answer1: 'Markdown',
-        answer2: 'HTML',
-        answer3: 'JavaScript',
-        answer4: 'CSS',
-        correct: 4,
+    question: 'Which language creates style?',
+    options: ['JavaScript', 'CSS', 'HTML', 'Markdown'],
+    answer: "CSS"
     },
     {
-        question: 'Which languages can you connect to work together',
-        answer1: 'JavaScript',
-        answer2: 'HTML',
-        answer3: 'CSS',
-        answer4: 'All of The Above',
-        correct: 4,
-    }
-]
+    question: 'Which languages can you connect to work together',
+    options: ['JavaScript', 'CSS', 'HTML', 'All of the choices'],
+    answer: 'All of the choices'
+    },
+    {
+    question: 'What does CSS stand for?',
+    options: ['Compact Style Script', 'Cascading Style Sheet', 'Computer Screen Sheet', 'Complex Screen Style'],
+    answer: "Cascading Style Sheet" 
+    },
+];
 
-startButton.addEventListener('click', startGame);
+//Start Button
+startBtn.addEventListener('click', function() {
+    //Switches Active Screen
+    startScreen.classList.remove("active");
+    questionScreen.classList.add("active");
 
-function startGame(event) {
-    setTime()
+    //Sets the score to 0
+    scoreDisplay.textContent = score;
 
-    console.log('started');
-    startScreen.classList.add('hidden')
-    questionScreen.classList.remove('hidden');
-    setQuestion1();
+    //Starts the Questions
+    startTimer();
+    showQuestions();
+});
 
-    if(secondsLeft = 0) {
-        return
-    }
-}
+function showQuestions() {
+    //Displays the current question
+    questionDisplay.textContent = questions[currentIndex].question;
 
+    //Options ready for user input
+    optionBtns.forEach((btn, index) => {
+        btn.textContent = questions[currentIndex].options[index];
 
+        btn.addEventListener('click', function() {
+            if (btn.textContent === questions[currentIndex].answer) {
+                score++;
+                scoreDisplay.textContent = score;
+                nextQuestion();
+            } else {
+                timer -= 15;
+            };
+        });
+    });
+};
 
-function setQuestion1() {
-    questionEl.textContent = question1;
-    answer1El.textContent = 'Local Storage';
-    answer2El.textContent =  'A Function';
-    answer3El.textContent = 'A Variable';
-    answer4El.textContent = 'A String';
-    answer1El = true;
-    answer2El = false;
-    answer3El = false;
-    answer4El = false;
-}
+function nextQuestion() {
+    if (currentIndex === (questions.length -1)) {
+        initialForm();
+    } else {
+        currentIndex++;
 
-function setQuestion2() {
-    questionEl.textContent = question2;
-    answer1El.textContent = 'JavaScript';
-    answer2El.textContent = 'CSS';
-    answer3El.textContent = 'HTML';
-    answer4El.textContent = 'None';
-    answer1El = false;
-    answer2El = false;
-    answer3El = true;
-    answer4El = false;
-}
+        questionDisplay.textContent = questions[currentIndex].question;
 
-function setQuestion3() {
-    questionEl.textContent = question3;
-    answer1El.textContent = 'Markdown';
-    answer2El.textContent =  'HTML';
-    answer3El.textContent = 'JavaScript';
-    answer4El.textContent = 'CSS';
-    answer1El = false;
-    answer2El = false;
-    answer3El = true;
-    answer4El = false;
-}
+        optionBtns.forEach((btn, index) => {
+            btn.textContent = questions[currentIndex].options[index];
+        });
+    };
+};
 
-function setQuestion4() {
-    questionEl.textContent = question4;
-    answer1El.textContent = 'JavaScript';
-    answer2El.textContent =  'HTML';
-    answer3El.textContent = 'CSS';
-    answer4El.textContent = 'All of the Above';
-    answer1El = false;
-    answer2El = false;
-    answer3El = true;
-    answer4El = false;
-}
+function startTimer() {
+    timerDisplay.textContent = timer;
 
-function setTime() {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent = "Timer: " + secondsLeft;
-      }, 1000);
-}
+    var timerCount = setInterval(function() {
+        timer--;
+        timerDisplay.textContent = timer;
 
+        if (timer <= 0) {
+            clearInterval(timerCount);
+            initialForm();
+        };
+    },1000);
+};

@@ -1,6 +1,8 @@
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 :root {
@@ -10,64 +12,106 @@
     --red: rgb(97, 29, 29);
     --white: #ffff;
    --grey: rgb(97, 90, 90);
-   --lightgrey: rgb(177, 177, 177);
+   --background-color: rgb(177, 177, 177);
 }
 
 
 body {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
     background-color: var(--grey);
 }
 
-.container {
-    width: 800px;
-    max-width: 80%;
+header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--lightgrey);
-    border-radius: 5px;
-    box-shadow: 10px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 15px;
 }
 
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.flex-center {
-    justify-content: center;
-    align-items: center;
-}
-
-.text-center {
+/* Quiz content summary section */
+section {
+    border: 2px var(--generic-color) solid;
+    padding: 10px;
+    margin: 200px;
     text-align: center;
+    line-height: 30px;
+    color: var(--generic-color);
+    background-color: var(--neutral);
+    
+  }
+  section div h1 {
+    font-size: 30px;
+    padding-bottom: 20px;
+  }
+  section div p {
+    padding: 10px 20px;
+  }
+  section div button {
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    text-decoration: none;
+  }
+  section div button:active {
+    background: var(--shadow-active);
+  }
+  section div button:hover {
+    cursor: pointer;
+  }
+  section div button a {
+    text-decoration: none;
+  }
+  
+  section div button.options {
+    display: block;
+    margin: 10px auto;
+    width: 25%;
+  }
+  
+
+.start-scrn {
+  display: none;
 }
 
-.btn-box {
-    display: grid;
-    gap: 10px
+.start-scrn.active {
+  display: block;
 }
 
-.btn {
-font-size: 30px;
-padding: 2;
-text-align: center;
-background-color: var(--purple);
-border-radius: 5px;
+/* Questions section */
+.questions-scrn {
+  display: none;
 }
 
-.hidden {
-    display: none;
+.questions-scrn.active {
+  display: block;
 }
 
-.btn:hover {
-    background-color: var(--lightblue);
-    border-color: black;
+/* Form section for user initials and score */
+.form {
+  display: none;
+  font-size: 20px;
+}
+
+.form.active {
+  display: block;
+}
+
+.user-input[type=text] {
+  padding: 10px;
+  font-size: 15px;
+  margin: 5px;
+}
+
+.user-input[type=text]:focus {
+ background-color: var(--shadow-active);
+}
+
+/* High scores section */
+.high-scores {
+  display: none;
+}
+
+.high-scores.active {
+  display: block;
 }

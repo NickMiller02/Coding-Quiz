@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <title>Home</title>
-
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Coding Quiz</title>
 </head>
 
 <body>
-    <div class="container flex-column">
+    
+    <!-- Header for highscore, timer, and score assets -->
+    <header>
+        <a href="#user-high-scores" class="high-scores"><h4>View High Scores</h4></a>
+        <p>Score: <span id='score'></span></p>
+        <h4>Timer: <span id='timer'></span></h4>
+    </header>
 
-        <div id="start-scrn" class="flex-column flex-center">
-            <div id="start-msg">
-                <h1>Coding Quiz</h1>
-            </div>
-            <div class="btn-box">
-                <button id="start-btn" class="start-btn btn">Start</button>
-                <button id="score-btn" class="score-btn btn">Highscores</button>
-            </div>
+    <!-- Quiz Question content -->
+    <section>
+        <!-- Start Screen -->
+        <div class="start-scrn active">
+            <h1>Coding Quiz</h1>
+            <p>
+                Welcome! This quiz was made to challenge basic knowledge
+                about basic coding necessities! You have 60 seconds to
+                answer all 5 questions and be careful! If you get one
+                question wrong then 15 seconds will be deducted!
+            </p>
+
+            <button id="start-btn">Start Quiz</button>
         </div>
 
-        <div id="question-box" class="hidden flex-column flex-center">
-            <p class="time"></p>
-            <p class="score"></p>
-            <h1 id="question" class="text-center"></h1>
-            <div id="answer-box" class="btn-box">
-                <button id='answer1' class="btn"></button>
-                <button id="answer2" class="btn"></button>
-                <button id="answer3" class="btn"></button>
-                <button id="answer4" class="btn"></button>
+        <!-- Question Screen -->
+        <div class="question-scrn">
+            <h2 class="questions"></h2>
+            <button class="option"></button>
+            <button class="option"></button>
+            <button class="option"></button>
+            <button class="option"></button>
+        </div>
+        
+        <!-- High score Form -->
+        <form>
+            <div class="form">
+                <h3>Game Over <span class='score'></span></h3>
+                <p> Enter Your Initial Below</p>
+                <input class="user-input" type="text" placeholder="Enter Initials Here">
+                <button class="submit">Save Score</button>
+                <button class="home">Home</button>
             </div>
+        </form>
+
+        <!-- High Score Screen -->
+        <div class="high-scores">
+            <h3>High Scores</h3>
+            <p id="userScore">
+                <button class="home">Home</button>
+            </p>
         </div>
 
-    </div>
+    </section>
     <script src="./assets/js/script.js"></script>
 </body>
+</html>
